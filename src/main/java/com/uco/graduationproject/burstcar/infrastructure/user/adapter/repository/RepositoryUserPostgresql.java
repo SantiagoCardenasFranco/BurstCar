@@ -4,6 +4,7 @@ import com.uco.graduationproject.burstcar.domain.dto.DtoUserSummary;
 import com.uco.graduationproject.burstcar.domain.model.Rol;
 import com.uco.graduationproject.burstcar.domain.model.User;
 import com.uco.graduationproject.burstcar.domain.port.user.RepositoryUser;
+import com.uco.graduationproject.burstcar.infrastructure.rol.adapter.entity.EntityRol;
 import com.uco.graduationproject.burstcar.infrastructure.user.adapter.entity.EntityUser;
 import com.uco.graduationproject.burstcar.infrastructure.user.adapter.repository.jpa.RepositoryUserJpa;
 import org.springframework.stereotype.Repository;
@@ -33,7 +34,13 @@ public class RepositoryUserPostgresql implements RepositoryUser {
 
     @Override
     public Long saveUser(User user) {
-        return null;
+        List<EntityRol> roles = user.getRols().stream().map(rol -> new EntityRol(rol.getName(),
+                rol.getDescription())).toList();
+
+        EntityUser entityUser = new EntityUser(user.getIdentification(), user.getName(),
+                user.getLastName(), user.getEmail(), user.getPassword(), roles);
+
+        return this.repositoryUserJpa.save(entityUser).getId();
     }
 
     @Override
@@ -43,21 +50,36 @@ public class RepositoryUserPostgresql implements RepositoryUser {
 
     @Override
     public Boolean deleteUser(Long id) {
-        return null;
+        this.repositoryUserJpa.deleteById(id);
+        return true;
     }
 
     @Override
     public Boolean updateUser(Long id, User user) {
+        EntityUser entityUser = new EntityUser();
+        entityUser.setId(id);
+        entityUser.setIdentification(user.getIdentification());
+        entityUser.setName(user.getName());
+        entityUser.setLastName(user.getEmail());
+        entityUser.setPassword(user.getPassword());
+        entityUser.setRoles(user.getRols().stream().map(rol -> new EntityRol(rol.getName(),
+                rol.getName())).toList());
+        return true;
+    }
+
+    @Override
+    public User consultUser(String email, String password) {
         return null;
     }
 
     @Override
-    public User consultUser(String name, String password) {
-        return null;
-    }
-
-    @Override
-    public DtoUserSummary consultarPorId(Long id) {
-        return null;
+    public DtoUserSummary consultPorId(Long id) {
+        return this.repositoryUserJpa.
+                findById(id).
+                map(entityUser -> new DtoUserSummary(entityUser.getIdentification(),
+                        entityUser.getName(), entityUser.getLastName(), entityUser.getEmail(),
+                        entityUser.getRoles().stream().map(rol -> Rol.of(rol.getName(),
+                                rol.getDescription())).toList()))
+                .orElse(null);
     }
 }

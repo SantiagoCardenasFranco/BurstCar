@@ -1,10 +1,8 @@
 package com.uco.graduationproject.burstcar.infrastructure.user.adapter.entity;
 
-import com.uco.graduationproject.burstcar.domain.model.Rol;
 import com.uco.graduationproject.burstcar.infrastructure.rol.adapter.entity.EntityRol;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,13 +15,17 @@ public class EntityUser {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
+    @Column(unique = true, length = 20, nullable = false)
     private String identification;
+    @Column(length = 20)
     private String name;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", length = 30)
     private String lastName;
-
+    @Column(length = 50, unique = true)
     private String email;
+    @Column(length = 16, unique = true)
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -33,8 +35,7 @@ public class EntityUser {
     public EntityUser() {
     }
 
-    public EntityUser(Long id, String identification, String name, String lastName, String email, String password, List<EntityRol> roles) {
-        this.id = id;
+    public EntityUser(String identification, String name, String lastName, String email, String password, List<EntityRol> roles) {
         this.identification = identification;
         this.name = name;
         this.lastName = lastName;
