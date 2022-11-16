@@ -2,10 +2,8 @@ package com.uco.graduationproject.burstcar.infrastructure.user.controller;
 
 import com.uco.graduationproject.burstcar.application.user.comand.ServiceApplicationSaveUser;
 import com.uco.graduationproject.burstcar.application.user.comand.dto.DtoSaveUser;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -17,6 +15,7 @@ public class ComandControllerUser {
         this.serviceApplicationSaveUser = serviceApplicationSaveUser;
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/save")
     public Long saveUser(@RequestBody DtoSaveUser dtoSaveUser){
         return this.serviceApplicationSaveUser.execute(dtoSaveUser);

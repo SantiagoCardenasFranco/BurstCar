@@ -7,6 +7,7 @@ import com.uco.graduationproject.burstcar.domain.port.user.RepositoryUser;
 import com.uco.graduationproject.burstcar.infrastructure.rol.adapter.entity.EntityRol;
 import com.uco.graduationproject.burstcar.infrastructure.user.adapter.entity.EntityUser;
 import com.uco.graduationproject.burstcar.infrastructure.user.adapter.repository.jpa.RepositoryUserJpa;
+import com.uco.graduationproject.burstcar.infrastructure.user.mapper.user.impl.EntityToDomainImpl;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,9 +16,11 @@ import java.util.List;
 public class RepositoryUserPostgresql implements RepositoryUser {
 
     private final RepositoryUserJpa repositoryUserJpa;
+    private final EntityToDomainImpl entityToDomain;
 
-    public RepositoryUserPostgresql(RepositoryUserJpa repositoryUserJpa) {
+    public RepositoryUserPostgresql(RepositoryUserJpa repositoryUserJpa, EntityToDomainImpl entityToDomain) {
         this.repositoryUserJpa = repositoryUserJpa;
+        this.entityToDomain = entityToDomain;
     }
 
     @Override
@@ -34,13 +37,7 @@ public class RepositoryUserPostgresql implements RepositoryUser {
 
     @Override
     public Long saveUser(User user) {
-        List<EntityRol> roles = user.getRols().stream().map(rol -> new EntityRol(rol.getName(),
-                rol.getDescription())).toList();
-
-        EntityUser entityUser = new EntityUser(user.getIdentification(), user.getName(),
-                user.getLastName(), user.getEmail(), user.getPassword(), roles);
-
-        return this.repositoryUserJpa.save(entityUser).getId();
+        return this.repositoryUserJpa.save(this.entityToDomain.mapperUserEntity(user)).getId();
     }
 
     @Override
@@ -73,7 +70,7 @@ public class RepositoryUserPostgresql implements RepositoryUser {
     }
 
     @Override
-    public DtoUserSummary consultPorId(Long id) {
+    public DtoUserSummary consultById(Long id) {
         return this.repositoryUserJpa.
                 findById(id).
                 map(entityUser -> new DtoUserSummary(entityUser.getIdentification(),
@@ -81,5 +78,11 @@ public class RepositoryUserPostgresql implements RepositoryUser {
                         entityUser.getRoles().stream().map(rol -> Rol.of(rol.getName(),
                                 rol.getDescription())).toList()))
                 .orElse(null);
+    }
+
+    @Override
+    public User consultByIdentification(String identification) {
+        EntityUser entityUser = this.repositoryUserJpa.findByIdentification(identification);
+        return this.entityToDomain.mapperUserDomain(entityUser);
     }
 }

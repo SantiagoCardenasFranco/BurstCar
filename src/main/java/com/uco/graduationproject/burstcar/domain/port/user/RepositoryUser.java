@@ -11,6 +11,7 @@ public interface RepositoryUser {
     Boolean deleteUser(Long id);
     Boolean updateUser(Long id, User user);
     User consultUser(String email, String password);
-    DtoUserSummary consultPorId(Long id);
+    DtoUserSummary consultById(Long id);
+    User consultByIdentification(String identification);
 
 }
