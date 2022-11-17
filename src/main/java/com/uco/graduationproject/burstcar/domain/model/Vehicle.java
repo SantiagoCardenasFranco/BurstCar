@@ -6,16 +6,18 @@ import lombok.Getter;
 public class Vehicle {
 
     private final VehicleFeatures vehicleFeatures;
-    private final Service vehicleService;
+    private final VehicleService vehicleService;
     private final User user;
+    private final boolean isEnable;
 
-    public static Vehicle of(VehicleFeatures vehicleFeatures, Service vehicleService, User user){
-        return new Vehicle(vehicleFeatures, vehicleService, user);
+    public static Vehicle of(VehicleFeatures vehicleFeatures, VehicleService vehicleService, User user, boolean isEnable){
+        return new Vehicle(vehicleFeatures, vehicleService, user, isEnable);
     }
 
-    private Vehicle(VehicleFeatures vehicleFeatures, Service vehicleService, User user) {
+    private Vehicle(VehicleFeatures vehicleFeatures, VehicleService vehicleService, User user, boolean isEnable) {
         this.vehicleFeatures = vehicleFeatures;
         this.vehicleService = vehicleService;
         this.user = user;
+        this.isEnable = isEnable;
     }
 }

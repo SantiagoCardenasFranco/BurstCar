@@ -1,27 +1,22 @@
 package com.uco.graduationproject.burstcar.application.user.comand;
 
+import com.uco.graduationproject.burstcar.application.mapper.user.impl.MapperUserApplicationImpl;
 import com.uco.graduationproject.burstcar.application.user.comand.dto.DtoSaveUser;
-import com.uco.graduationproject.burstcar.domain.model.Rol;
-import com.uco.graduationproject.burstcar.domain.model.User;
 import com.uco.graduationproject.burstcar.domain.service.user.ServiceSaveUser;
-import com.uco.graduationproject.burstcar.infrastructure.rol.adapter.repository.RepositoryRolPostgresql;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ServiceApplicationSaveUser {
 
     private final ServiceSaveUser serviceSaveUser;
-    private final RepositoryRolPostgresql repositoryRolPostgresql;
-
-    public ServiceApplicationSaveUser(ServiceSaveUser serviceSaveUser, RepositoryRolPostgresql repositoryRolPostgresql) {
+    private final MapperUserApplicationImpl mapperObjectApplication;
+    public ServiceApplicationSaveUser(ServiceSaveUser serviceSaveUser, MapperUserApplicationImpl mapperObjectApplication) {
         this.serviceSaveUser = serviceSaveUser;
-        this.repositoryRolPostgresql = repositoryRolPostgresql;
+        this.mapperObjectApplication = mapperObjectApplication;
     }
 
     public Long execute(DtoSaveUser dto){
-        return this.serviceSaveUser.executeSave(User.of(dto.getIdentification(), dto.getName(),
-                dto.getLastName(), dto.getEmail(), dto.getPassword(),
-                dto.getRoles().stream().map(rol -> Rol.of(rol.getName(),
-                        this.repositoryRolPostgresql.findDescriptionByName(rol.getName()))).toList()));
+        return this.serviceSaveUser.executeSave(this.mapperObjectApplication.mapperUserToDomain(dto));
     }
+
 }

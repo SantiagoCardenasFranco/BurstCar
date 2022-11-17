@@ -16,7 +16,7 @@ public class ValidatorAttributes {
         }
     }
 
-    public static void sizePassword(String valor, String message)
+    private static void sizePassword(String valor, String message)
     {
         if(valor.length()>=8 && valor.length()<=15)
         {
@@ -30,12 +30,12 @@ public class ValidatorAttributes {
         }
     }
 
-    public static boolean acceptancePatternPassword(String data, String pattern)
+    private static boolean acceptancePatternPassword(String data, String pattern)
     {
         return data.matches(pattern);
     }
 
-    public static boolean acceptancePatternEmail(String data, String pattern)
+    private static boolean acceptancePatternEmail(String data, String pattern)
     {
         return data.matches(pattern);
     }
@@ -51,7 +51,7 @@ public class ValidatorAttributes {
         }
     }
 
-    public static void specialCharactersCorreo(String email, String message)
+    public static void specialCharactersEmail(String email, String message)
     {
         if(!acceptancePatternEmail(email, PATTERN_EMAIL))
         {
