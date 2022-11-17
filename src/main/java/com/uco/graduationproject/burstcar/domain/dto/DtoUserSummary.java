@@ -1,11 +1,15 @@
 package com.uco.graduationproject.burstcar.domain.dto;
 
 import com.uco.graduationproject.burstcar.domain.model.Rol;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class DtoUserSummary {
 
     private String identification;
@@ -13,15 +17,4 @@ public class DtoUserSummary {
     private String lastName;
     private String email;
     private List<Rol> rols;
-
-    public DtoUserSummary() {
-    }
-
-    public DtoUserSummary(String identification, String name, String lastName, String email, List<Rol> rols) {
-        this.identification = identification;
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.rols = rols;
-    }
 }
