@@ -3,6 +3,7 @@ package com.uco.graduationproject.burstcar.infrastructure.repository.vehiclefuet
 import com.uco.graduationproject.burstcar.domain.model.VehicleFeatures;
 import com.uco.graduationproject.burstcar.domain.port.vehiclefeatures.RepositoryVehicleFeature;
 import com.uco.graduationproject.burstcar.infrastructure.mapper.vehiclefeature.impl.EntityToDomainFeaturesImpl;
+import com.uco.graduationproject.burstcar.infrastructure.repository.vehiclefuetures.adapter.entity.EntityVehicleFeatures;
 import com.uco.graduationproject.burstcar.infrastructure.repository.vehiclefuetures.adapter.repository.jpa.RepositoryVehicleFeatureJpa;
 import org.springframework.stereotype.Repository;
 
@@ -25,12 +26,17 @@ public class RepositoryVehicleFeaturePostgresql implements RepositoryVehicleFeat
 
     @Override
     public boolean existsFeature(VehicleFeatures vehicleFeatures) {
-        return false;
+        return this.repositoryVehicleFeatureJpa.findByLicensePlate(vehicleFeatures.getLicensePlate()) != null;
     }
 
     @Override
     public Boolean updateFeature(Long id, VehicleFeatures vehicleFeatures) {
-        return null;
+        EntityVehicleFeatures entityVehicleFeatures = new EntityVehicleFeatures();
+        entityVehicleFeatures.setId(id);
+        entityVehicleFeatures.setLicensePlate(vehicleFeatures.getLicensePlate());
+        entityVehicleFeatures.setModel(vehicleFeatures.getModel());
+        entityVehicleFeatures.setBrand(vehicleFeatures.getBrand());
+        return true;
     }
 
     @Override

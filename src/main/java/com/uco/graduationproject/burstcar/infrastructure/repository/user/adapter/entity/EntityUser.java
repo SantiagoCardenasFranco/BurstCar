@@ -13,7 +13,7 @@ import java.util.List;
 public class EntityUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
     @Column(unique = true, length = 20, nullable = false)

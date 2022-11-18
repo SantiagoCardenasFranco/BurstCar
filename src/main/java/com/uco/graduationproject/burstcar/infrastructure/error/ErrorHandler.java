@@ -17,6 +17,7 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
 
     public ErrorHandler() {
         STATUS.put(IllegalStateException.class.getSimpleName(), HttpStatus.CONFLICT.value());
+        STATUS.put(IllegalArgumentException.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
     }
 
     @ExceptionHandler(Exception.class)

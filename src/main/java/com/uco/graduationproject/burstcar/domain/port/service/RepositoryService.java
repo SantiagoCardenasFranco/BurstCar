@@ -7,4 +7,6 @@ import java.util.List;
 public interface RepositoryService {
     List<VehicleService> listService();
     Long save(VehicleService service);
+    boolean updateService(String nameService);
+
 }

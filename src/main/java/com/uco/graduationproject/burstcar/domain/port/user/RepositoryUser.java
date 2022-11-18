@@ -8,8 +8,7 @@ public interface RepositoryUser {
     List<DtoUserSummary> listUser();
     Long saveUser(User user);
     boolean existUser(User user);
-    Boolean deleteUser(Long id);
-    Boolean updateUser(Long id, User user);
+    void updateUser(Long id, User user);
     User consultUser(String email, String password);
     DtoUserSummary consultById(Long id);
     User consultByIdentification(String identification);

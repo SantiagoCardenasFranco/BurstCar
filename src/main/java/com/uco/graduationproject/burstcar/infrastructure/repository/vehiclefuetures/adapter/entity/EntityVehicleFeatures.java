@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class EntityVehicleFeatures {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
     @Column(unique = true, length = 10, name = "license_plate")
     private String licensePlate;

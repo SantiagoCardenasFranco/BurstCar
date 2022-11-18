@@ -42,26 +42,21 @@ public class RepositoryUserPostgresql implements RepositoryUser {
 
     @Override
     public boolean existUser(User user) {
-        return false;
+        return this.repositoryUserJpa.findByIdentification(user.getIdentification()) != null;
     }
 
     @Override
-    public Boolean deleteUser(Long id) {
-        this.repositoryUserJpa.deleteById(id);
-        return true;
-    }
-
-    @Override
-    public Boolean updateUser(Long id, User user) {
+    public void updateUser(Long id, User user) {
         EntityUser entityUser = new EntityUser();
         entityUser.setId(id);
         entityUser.setIdentification(user.getIdentification());
         entityUser.setName(user.getName());
-        entityUser.setLastName(user.getEmail());
+        entityUser.setLastName(user.getLastName());
+        entityUser.setEmail(user.getEmail());
         entityUser.setPassword(user.getPassword());
         entityUser.setRoles(user.getRols().stream().map(rol -> new EntityRol(rol.getName(),
                 rol.getName())).toList());
-        return true;
+        this.repositoryUserJpa.save(entityUser);
     }
 
     @Override

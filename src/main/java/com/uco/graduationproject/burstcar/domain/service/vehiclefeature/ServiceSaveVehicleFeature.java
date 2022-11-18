@@ -12,6 +12,10 @@ public class ServiceSaveVehicleFeature {
     }
 
     public Long executeSave(VehicleFeatures vehicleFeatures){
-        return this.repositoryVehicleFeature.saveFeature(vehicleFeatures);
+        if(this.repositoryVehicleFeature.existsFeature(vehicleFeatures) == false){
+            return this.repositoryVehicleFeature.saveFeature(vehicleFeatures);
+        }
+        throw new IllegalArgumentException("Estas castacteristicas de su vehiculo es muy parecida a una que ya está " +
+                "registrada, por favor ingrese de nuevo los datos");
     }
 }
