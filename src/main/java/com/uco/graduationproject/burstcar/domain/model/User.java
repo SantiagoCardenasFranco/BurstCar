@@ -12,7 +12,7 @@ public class User {
     private final String name;
     private final String lastName;
     private final String email;
-    private final String password;
+    private String password;
     private final List<Rol> rols;
 
     public static User of(String identification, String name, String lastName, String email, String password,
@@ -24,7 +24,6 @@ public class User {
         ValidatorAttributes.validateRequired(name, "La contraseña del usuraio no puede ser nulo");
         ValidatorAttributes.noEmpty(rols, "Un usuario siempre debe tenr un rol");
         ValidatorAttributes.specialCharactersEmail(email, "El email no corresponde con una buena escritura");
-        ValidatorAttributes.specialCharactersPassword(password, "La contarseña no es permitida");
         return new User(identification, name, lastName, email, password, rols);
     }
     private User(String identification, String name, String lastName, String email, String password, List<Rol> rols) {
@@ -34,5 +33,9 @@ public class User {
         this.email = email;
         this.password = password;
         this.rols = rols;
+    }
+
+    public void assignEncryptedKey(String password){
+        this.password = password;
     }
 }

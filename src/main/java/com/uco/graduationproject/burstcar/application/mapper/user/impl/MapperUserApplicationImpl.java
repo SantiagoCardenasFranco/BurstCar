@@ -1,6 +1,7 @@
 package com.uco.graduationproject.burstcar.application.mapper.user.impl;
 
 import com.uco.graduationproject.burstcar.application.mapper.MapperObjectApplication;
+import com.uco.graduationproject.burstcar.application.user.comand.dto.DtoRol;
 import com.uco.graduationproject.burstcar.application.user.comand.dto.DtoSaveUser;
 import com.uco.graduationproject.burstcar.domain.model.Rol;
 import com.uco.graduationproject.burstcar.domain.model.User;
@@ -20,7 +21,9 @@ public class MapperUserApplicationImpl implements MapperObjectApplication<DtoSav
 
     @Override
     public DtoSaveUser mapperUserToDto(User domain) {
-        return null;
+        return new DtoSaveUser(domain.getIdentification(), domain.getName(), domain.getLastName(), domain.getEmail(),
+                domain.getPassword(), domain.getRols().stream().map(rol ->
+                new DtoRol(rol.getName())).toList());
     }
 
     private String descriptionRol(String name){

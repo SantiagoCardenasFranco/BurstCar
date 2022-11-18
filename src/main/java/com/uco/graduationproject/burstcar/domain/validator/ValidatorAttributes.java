@@ -18,7 +18,7 @@ public class ValidatorAttributes {
 
     private static void sizePassword(String valor, String message)
     {
-        if(valor.length()>=8 && valor.length()<=15)
+        if(!(valor.length()>=8 && valor.length()<=16))
         {
             throw new IllegalArgumentException(message);
         }
@@ -47,7 +47,7 @@ public class ValidatorAttributes {
             throw new IllegalArgumentException(message);
         }
         else{
-            ValidatorAttributes.sizePassword(password, message);
+            ValidatorAttributes.sizePassword(password, "Valor del tamaño excedido");
         }
     }
 

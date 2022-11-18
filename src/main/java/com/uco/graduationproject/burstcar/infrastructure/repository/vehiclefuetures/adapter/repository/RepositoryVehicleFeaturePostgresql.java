@@ -36,6 +36,7 @@ public class RepositoryVehicleFeaturePostgresql implements RepositoryVehicleFeat
         entityVehicleFeatures.setLicensePlate(vehicleFeatures.getLicensePlate());
         entityVehicleFeatures.setModel(vehicleFeatures.getModel());
         entityVehicleFeatures.setBrand(vehicleFeatures.getBrand());
+        this.repositoryVehicleFeatureJpa.save(entityVehicleFeatures);
         return true;
     }
 

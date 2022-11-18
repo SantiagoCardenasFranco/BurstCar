@@ -76,8 +76,8 @@ public class RepositoryUserPostgresql implements RepositoryUser {
     }
 
     @Override
-    public User consultByIdentification(String identification) {
+    public DtoUserSummary consultByIdentification(String identification) {
         EntityUser entityUser = this.repositoryUserJpa.findByIdentification(identification);
-        return this.entityToDomain.mapperUserToDomain(entityUser);
+        return this.entityToDomain.mapperUserToDtoSummary(entityUser);
     }
 }

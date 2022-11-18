@@ -11,6 +11,6 @@ public interface RepositoryUser {
     void updateUser(Long id, User user);
     User consultUser(String email, String password);
     DtoUserSummary consultById(Long id);
-    User consultByIdentification(String identification);
+    DtoUserSummary consultByIdentification(String identification);
 
 }

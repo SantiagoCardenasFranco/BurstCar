@@ -25,7 +25,7 @@ public class EntityUser {
     private String lastName;
     @Column(length = 50, unique = true)
     private String email;
-    @Column(length = 16, unique = true)
+    @Column(unique = true)
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
