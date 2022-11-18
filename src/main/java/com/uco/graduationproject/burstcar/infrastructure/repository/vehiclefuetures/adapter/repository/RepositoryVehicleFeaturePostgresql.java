@@ -30,14 +30,13 @@ public class RepositoryVehicleFeaturePostgresql implements RepositoryVehicleFeat
     }
 
     @Override
-    public Boolean updateFeature(Long id, VehicleFeatures vehicleFeatures) {
+    public void updateFeature(Long id, VehicleFeatures vehicleFeatures) {
         EntityVehicleFeatures entityVehicleFeatures = new EntityVehicleFeatures();
         entityVehicleFeatures.setId(id);
         entityVehicleFeatures.setLicensePlate(vehicleFeatures.getLicensePlate());
         entityVehicleFeatures.setModel(vehicleFeatures.getModel());
         entityVehicleFeatures.setBrand(vehicleFeatures.getBrand());
         this.repositoryVehicleFeatureJpa.save(entityVehicleFeatures);
-        return true;
     }
 
     @Override

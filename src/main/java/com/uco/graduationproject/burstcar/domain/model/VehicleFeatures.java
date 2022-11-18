@@ -11,7 +11,7 @@ public class VehicleFeatures {
     private final String brand;
 
     public static VehicleFeatures of(String licensePlate, String model, String brand){
-        ValidatorAttributes.validateRequired(licensePlate, "Un vehiculo siempre debe tenr matricula");
+        ValidatorAttributes.validateRequired(licensePlate, "Un vehiculo siempre debe tener matricula");
         ValidatorAttributes.validateRequired(model, "Un vehiculo debe de tener un modelo");
         ValidatorAttributes.validateRequired(brand, "Un vehiculo es de una marca");
         return new VehicleFeatures(licensePlate, model, brand);
