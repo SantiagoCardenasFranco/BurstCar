@@ -1,6 +1,6 @@
 package com.uco.graduationproject.burstcar.infrastructure.repository.vehicleservice.controller;
 
-import com.uco.graduationproject.burstcar.application.vehicleservice.consult.ServiceApplicationListVehicleService;
+import com.uco.graduationproject.burstcar.application.service.vehicleservice.consult.ServiceApplicationListVehicleService;
 import com.uco.graduationproject.burstcar.domain.model.VehicleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

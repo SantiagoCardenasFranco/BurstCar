@@ -1,7 +1,7 @@
 package com.uco.graduationproject.burstcar.application.mapper.vehiclefeature.impl;
 
 import com.uco.graduationproject.burstcar.application.mapper.MapperObjectApplication;
-import com.uco.graduationproject.burstcar.application.vehiclefeature.comand.dto.DtoSaveVehicleFeature;
+import com.uco.graduationproject.burstcar.application.service.vehiclefeature.comand.dto.DtoSaveVehicleFeature;
 import com.uco.graduationproject.burstcar.domain.model.VehicleFeatures;
 import org.springframework.context.annotation.Configuration;
 

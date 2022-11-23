@@ -1,8 +1,8 @@
 package com.uco.graduationproject.burstcar.infrastructure.repository.vehicleservice.controller;
 
-import com.uco.graduationproject.burstcar.application.vehicleservice.comand.ServiceApplicationSaveVehicleService;
-import com.uco.graduationproject.burstcar.application.vehicleservice.comand.ServiceApplicationUpdateVehicleService;
-import com.uco.graduationproject.burstcar.application.vehicleservice.comand.dto.DtoSaveVehicleService;
+import com.uco.graduationproject.burstcar.application.service.vehicleservice.comand.ServiceApplicationSaveVehicleService;
+import com.uco.graduationproject.burstcar.application.service.vehicleservice.comand.ServiceApplicationUpdateVehicleService;
+import com.uco.graduationproject.burstcar.application.service.vehicleservice.comand.dto.DtoSaveVehicleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

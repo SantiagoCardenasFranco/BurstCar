@@ -10,7 +10,6 @@ public interface RepositoryUser {
     boolean existUser(User user);
     void updateUser(Long id, User user);
     User consultUser(String email, String password);
-    DtoUserSummary consultById(Long id);
     DtoUserSummary consultByIdentification(String identification);
 
 }

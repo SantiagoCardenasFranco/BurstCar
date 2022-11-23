@@ -7,6 +7,8 @@ import com.uco.graduationproject.burstcar.infrastructure.repository.vehiclefuetu
 import com.uco.graduationproject.burstcar.infrastructure.repository.vehiclefuetures.adapter.repository.jpa.RepositoryVehicleFeatureJpa;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class RepositoryVehicleFeaturePostgresql implements RepositoryVehicleFeature {
 
@@ -43,5 +45,11 @@ public class RepositoryVehicleFeaturePostgresql implements RepositoryVehicleFeat
     public VehicleFeatures findFeatures(String licensePlate) {
         return this.entityToDomainFeatures.mapperUserToDomain(this.repositoryVehicleFeatureJpa.
                 findByLicensePlate(licensePlate));
+    }
+
+    @Override
+    public List<VehicleFeatures> listFeatures() {
+        return this.repositoryVehicleFeatureJpa.findAll().stream().map(
+                this.entityToDomainFeatures::mapperUserToDomain).toList();
     }
 }

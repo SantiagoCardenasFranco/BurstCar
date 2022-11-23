@@ -1,8 +1,8 @@
 package com.uco.graduationproject.burstcar.application.mapper.user.impl;
 
 import com.uco.graduationproject.burstcar.application.mapper.MapperObjectApplication;
-import com.uco.graduationproject.burstcar.application.user.comand.dto.DtoRol;
-import com.uco.graduationproject.burstcar.application.user.comand.dto.DtoSaveUser;
+import com.uco.graduationproject.burstcar.application.service.user.comand.dto.DtoRol;
+import com.uco.graduationproject.burstcar.application.service.user.comand.dto.DtoSaveUser;
 import com.uco.graduationproject.burstcar.domain.model.Rol;
 import com.uco.graduationproject.burstcar.domain.model.User;
 import org.springframework.context.annotation.Configuration;

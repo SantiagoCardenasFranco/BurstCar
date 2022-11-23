@@ -61,18 +61,11 @@ public class RepositoryUserPostgresql implements RepositoryUser {
 
     @Override
     public User consultUser(String email, String password) {
-        return null;
-    }
-
-    @Override
-    public DtoUserSummary consultById(Long id) {
-        return this.repositoryUserJpa.
-                findById(id).
-                map(entityUser -> new DtoUserSummary(entityUser.getIdentification(),
-                        entityUser.getName(), entityUser.getLastName(), entityUser.getEmail(),
-                        entityUser.getRoles().stream().map(rol -> Rol.of(rol.getName(),
-                                rol.getDescription())).toList()))
-                .orElse(null);
+        EntityUser entityUser = this.repositoryUserJpa.findByEmailAndPassword(email, password);
+        if(entityUser == null){
+            return null;
+        }
+        return this.entityToDomain.mapperUserToDomain(entityUser);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.uco.graduationproject.burstcar.infrastructure.repository.user.controller;
 
-import com.uco.graduationproject.burstcar.application.user.consult.ServiceApplicationFindUser;
-import com.uco.graduationproject.burstcar.application.user.consult.ServiceApplicationListUser;
+import com.uco.graduationproject.burstcar.application.service.user.consult.ServiceApplicationFindUser;
+import com.uco.graduationproject.burstcar.application.service.user.consult.ServiceApplicationListUser;
 import com.uco.graduationproject.burstcar.domain.dto.DtoUserSummary;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
