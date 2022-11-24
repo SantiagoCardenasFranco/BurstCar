@@ -50,9 +50,34 @@ class ArchitectureCleanTest {
     }
 
     @Test
-    void controllersWithAnnotationForUser(){
+    void controllersWithAnnotation(){
         classes()
                 .that().resideInAnyPackage("..infrastructure.repository.user.controller..")
+                .should().beAnnotatedWith(RestController.class)
+                .andShould().bePublic().check(javaClasses);
+
+        classes()
+                .that().resideInAnyPackage("..infrastructure.repository.additonaldata.controller..")
+                .should().beAnnotatedWith(RestController.class)
+                .andShould().bePublic().check(javaClasses);
+
+        classes()
+                .that().resideInAnyPackage("..infrastructure.repository.login.controller..")
+                .should().beAnnotatedWith(RestController.class)
+                .andShould().bePublic().check(javaClasses);
+
+        classes()
+                .that().resideInAnyPackage("..infrastructure.repository.vehicle.controller..")
+                .should().beAnnotatedWith(RestController.class)
+                .andShould().bePublic().check(javaClasses);
+
+        classes()
+                .that().resideInAnyPackage("..infrastructure.repository.vehiclefuetures.controller..")
+                .should().beAnnotatedWith(RestController.class)
+                .andShould().bePublic().check(javaClasses);
+
+        classes()
+                .that().resideInAnyPackage("..infrastructure.repository.vehicleservice.controller..")
                 .should().beAnnotatedWith(RestController.class)
                 .andShould().bePublic().check(javaClasses);
     }
