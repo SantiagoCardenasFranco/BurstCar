@@ -1,14 +1,12 @@
 package com.uco.graduationproject.burstcar.domain.port.vehicle;
 
-import com.uco.graduationproject.burstcar.domain.model.VehicleService;
-import com.uco.graduationproject.burstcar.domain.model.User;
+import com.uco.graduationproject.burstcar.domain.dto.DtoVehicleSummary;
 import com.uco.graduationproject.burstcar.domain.model.Vehicle;
 import java.util.List;
 
 public interface RepositoryVehicle {
-    List<Vehicle> listVehicle();
+    List<DtoVehicleSummary> listVehicle();
     Long saveVehicle(Vehicle vehicle);
-    boolean existsVehicle(Vehicle vehicle);
-    Vehicle consultByUser(User user);
-    List<Vehicle> consultByService(VehicleService service);
+    DtoVehicleSummary consultByUser(String userIdentification);
+    List<DtoVehicleSummary> consultByServiceAndEnabled(boolean bool, String nameService);
 }

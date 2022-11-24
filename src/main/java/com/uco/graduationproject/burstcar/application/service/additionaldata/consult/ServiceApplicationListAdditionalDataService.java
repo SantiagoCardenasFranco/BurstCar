@@ -15,7 +15,6 @@ public class ServiceApplicationListAdditionalDataService {
         this.repositoryDataAdditional = repositoryDataAdditional;
     }
 
-
     public List<DtoAdditionalData> execute(){
         return this.repositoryDataAdditional.listFindAll();
     }

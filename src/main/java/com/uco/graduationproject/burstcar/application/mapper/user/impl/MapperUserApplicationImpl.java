@@ -33,6 +33,9 @@ public class MapperUserApplicationImpl implements MapperObjectApplication<DtoSav
         else if("Cliente".equals(name)){
             return "Encargado de solicitar el servicio de algún conductor disponible";
         }
+        else if("Administrador".equals(name)) {
+            return "Encargado de ver información";
+        }
         throw  new IllegalStateException("El valor es nulo o no es valido, no se puede operar");
     }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "user_app")
+
 public class EntityUser {
 
     @Id

@@ -46,4 +46,10 @@ public class RepositoryVehicleServicePostgresql implements RepositoryService {
     public boolean existService(String service) {
         return this.repositoryVehicleFeatureJpa.findByNameService(service) != null;
     }
+
+    @Override
+    public VehicleService findByName(String name) {
+        return this.entityToDomainServices.mapperUserToDomain(
+                this.repositoryVehicleFeatureJpa.findByNameService(name));
+    }
 }

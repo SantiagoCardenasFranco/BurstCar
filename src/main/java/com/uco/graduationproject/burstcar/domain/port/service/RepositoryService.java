@@ -9,5 +9,6 @@ public interface RepositoryService {
     Long save(VehicleService service);
     boolean updateService(Long id, VehicleService service);
     boolean existService(String name);
+    VehicleService findByName(String name);
 
 }

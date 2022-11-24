@@ -1,7 +1,6 @@
 package com.uco.graduationproject.burstcar.domain.model;
 
 import com.uco.graduationproject.burstcar.domain.validator.ValidatorAttributes;
-import com.uco.graduationproject.burstcar.domain.validator.ValidatorObjects;
 import lombok.Getter;
 import java.util.List;
 
@@ -12,7 +11,7 @@ public class User {
     private final String name;
     private final String lastName;
     private final String email;
-    private String password;
+    private final String password;
     private final List<Rol> rols;
 
     public static User of(String identification, String name, String lastName, String email, String password,
@@ -33,9 +32,5 @@ public class User {
         this.email = email;
         this.password = password;
         this.rols = rols;
-    }
-
-    public void assignEncryptedKey(String password){
-        this.password = password;
     }
 }
