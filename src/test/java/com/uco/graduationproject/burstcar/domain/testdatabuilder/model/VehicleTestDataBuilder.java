@@ -1,4 +1,4 @@
-package com.uco.graduationproject.burstcar.domain.testdatabuilder;
+package com.uco.graduationproject.burstcar.domain.testdatabuilder.model;
 
 
 import com.uco.graduationproject.burstcar.domain.model.*;

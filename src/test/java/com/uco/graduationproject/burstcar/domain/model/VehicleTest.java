@@ -1,7 +1,7 @@
 package com.uco.graduationproject.burstcar.domain.model;
 
 
-import com.uco.graduationproject.burstcar.domain.testdatabuilder.VehicleTestDataBuilder;
+import com.uco.graduationproject.burstcar.domain.testdatabuilder.model.VehicleTestDataBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

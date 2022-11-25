@@ -2,7 +2,11 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.5'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'jacoco'
+	id "org.owasp.dependencycheck" version "6.5.3"
+	id 'info.solidsoft.pitest' version '1.7.4'
 }
+
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -26,14 +30,37 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'com.tngtech.archunit:archunit-junit5:1.0.0'
+	configurations {
+		runtime.exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
 	implementation 'commons-codec:commons-codec:1.15'
 
 	implementation 'com.h2database:h2:2.1.214'
 
 	testImplementation 'com.h2database:h2:2.1.214'
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.12'
+
+	testImplementation 'junit:junit:4.13.2'
 }
 
-tasks.named('test') {
+pitest {
+	testPlugin = 'junit5'
+	junit5PluginVersion = '0.15'
+	testSourceSets = [sourceSets.test]
+	mainSourceSets = [sourceSets.main]
+	useClasspathFile = true
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		html.enabled true
+	}
+	additionalSourceDirs files("aplicacion/src/main/java")
+	additionalClassDirs files("aplicacion/build/classes/java/main")
+}
+
+test {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
 }
