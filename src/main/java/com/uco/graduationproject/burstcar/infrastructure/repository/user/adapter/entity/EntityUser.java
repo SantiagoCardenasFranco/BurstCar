@@ -14,7 +14,7 @@ import java.util.List;
 public class EntityUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(unique = true, length = 20, nullable = false)
@@ -29,7 +29,7 @@ public class EntityUser {
     @Column(unique = true)
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name= "id_user")
     private List<EntityRol> roles;
 

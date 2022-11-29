@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class EntityVehicleService {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column(unique = true, length = 20, name = "service")
     private String nameService;

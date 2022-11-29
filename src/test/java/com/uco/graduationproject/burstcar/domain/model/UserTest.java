@@ -45,14 +45,6 @@ class UserTest {
                         new UserTestDataBuilder().byDefault().withRols(rols).build()).getMessage());
     }
 
-
-    @Test
-    void validateFieldsMissingEmail() {
-        Assertions.assertEquals("El email no corresponde con una buena escritura",
-                Assertions.assertThrows(IllegalArgumentException.class, () ->
-                        new UserTestDataBuilder().byDefault().withEmail("@gmail.com").build()).getMessage());
-    }
-
     @Test
     void validateFieldsMissingEmailIncorrect() {
 

@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class EntityVehicle {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @ManyToOne

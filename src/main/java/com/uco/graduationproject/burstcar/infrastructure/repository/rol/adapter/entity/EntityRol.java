@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class EntityRol {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column(length = 20, nullable = false)
     private String  name;
