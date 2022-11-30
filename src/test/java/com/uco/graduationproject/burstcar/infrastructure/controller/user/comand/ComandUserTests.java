@@ -67,6 +67,20 @@ class ComandUserTests {
     }
 
     @Test
+    void noCreateUserPasswordSizeIncorrect() throws Exception {
+        DtoSaveUser comandUserTestsDataBuilder = new ComandUserTestsDataBuilder()
+                .byDefault().withIdentification("892").withEmail("34@gamil.com")
+                .withPassword("w91234Snpo<code>t0d0").build();
+
+        mocMvc.perform(post("/user/save")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(comandUserTestsDataBuilder)))
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("exceptionName", is("IllegalArgumentException")))
+                .andExpect(jsonPath("message", is("La contarseña no es permitida")));
+    }
+
+    @Test
     void noCreateUserPasswordIncorrect() throws Exception {
         DtoSaveUser comandUserTestsDataBuilder = new ComandUserTestsDataBuilder()
                 .byDefault().withIdentification("892").withEmail("34@gamil.com")
