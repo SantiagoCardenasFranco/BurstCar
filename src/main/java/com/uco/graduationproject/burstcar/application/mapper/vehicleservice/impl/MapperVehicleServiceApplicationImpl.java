@@ -14,8 +14,4 @@ public class MapperVehicleServiceApplicationImpl implements MapperObjectApplicat
         return VehicleService.of(dtoSaveVehicleService.getNameService(), dtoSaveVehicleService.getDescriptionService());
     }
 
-    @Override
-    public DtoSaveVehicleService mapperUserToDto(VehicleService domain) {
-        return new DtoSaveVehicleService(domain.getNameService(), domain.getDescriptionService());
-    }
 }

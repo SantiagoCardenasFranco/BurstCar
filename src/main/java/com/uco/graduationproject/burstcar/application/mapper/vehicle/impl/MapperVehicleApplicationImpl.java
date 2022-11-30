@@ -23,10 +23,4 @@ public class MapperVehicleApplicationImpl implements MapperObjectApplication<Dto
                 dtoSaveVehicle.getUser(), false);
     }
 
-    @Override
-    public DtoSaveVehicle mapperUserToDto(Vehicle domain) {
-        return new DtoSaveVehicle(domain.getVehicleFeatures(),
-                new DtoSaveVehicleService(domain.getVehicleService().getNameService()),
-                domain.getUser());
-    }
 }

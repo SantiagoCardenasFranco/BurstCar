@@ -19,12 +19,6 @@ public class MapperUserApplicationImpl implements MapperObjectApplication<DtoSav
                         descriptionRol(rol.getName()))).toList());
     }
 
-    @Override
-    public DtoSaveUser mapperUserToDto(User domain) {
-        return new DtoSaveUser(domain.getIdentification(), domain.getName(), domain.getLastName(), domain.getEmail(),
-                domain.getPassword(), domain.getRols().stream().map(rol ->
-                new DtoRol(rol.getName())).toList());
-    }
 
     private String descriptionRol(String name){
         if(Objects.equals(name, "Conductor")){

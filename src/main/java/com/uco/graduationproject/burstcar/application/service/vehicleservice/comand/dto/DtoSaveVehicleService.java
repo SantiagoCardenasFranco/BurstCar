@@ -13,4 +13,5 @@ import lombok.Setter;
 public class DtoSaveVehicleService {
     private String nameService;
     private String descriptionService;
+
 }

@@ -1,7 +1,6 @@
 package com.uco.graduationproject.burstcar.infrastructure.controller.vehiclefeatures.comand;
 
 import com.uco.graduationproject.burstcar.application.service.vehiclefeature.comand.dto.DtoSaveVehicleFeature;
-import com.uco.graduationproject.burstcar.application.service.vehicleservice.comand.dto.DtoSaveVehicleService;
 
 public class ComandVehicleFeatureTestsDataBuilder {
 

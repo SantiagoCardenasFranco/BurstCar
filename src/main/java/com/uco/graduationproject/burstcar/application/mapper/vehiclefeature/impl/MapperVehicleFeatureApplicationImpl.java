@@ -13,10 +13,4 @@ public class MapperVehicleFeatureApplicationImpl implements MapperObjectApplicat
         return VehicleFeatures.of(dtoSaveVehicleFeature.getLicensePlate(), dtoSaveVehicleFeature.getModel(),
                 dtoSaveVehicleFeature.getBrand());
     }
-
-    @Override
-    public DtoSaveVehicleFeature mapperUserToDto(VehicleFeatures domain) {
-        return new DtoSaveVehicleFeature(domain.getLicensePlate(), domain.getModel(),
-                domain.getBrand());
-    }
 }
