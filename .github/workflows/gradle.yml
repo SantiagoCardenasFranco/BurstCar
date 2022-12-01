@@ -1,33 +1,21 @@
 name: CI
 on:
+  # Trigger analysis when pushing in master or pull requests, and when creating
+  # a pull request.
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
+
 jobs:
-  build:
+  sonarcloud:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 17
-        uses: actions/setup-java@v2
         with:
-          java-version: 17
-          distribution: 'adopt'
-          cache: gradle
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v1
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-      - name: Compile
-        run: ./gradlew compileJava
-      - name: Test
-        run: ./gradlew test
-      - name: Jar
-        run: ./gradlew bootJar
-      - name: analyze
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@v1.3
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew sonarqube --info
