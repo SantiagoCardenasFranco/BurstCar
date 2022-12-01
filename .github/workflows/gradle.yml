@@ -29,6 +29,5 @@ jobs:
         run: ./gradlew bootJar
       - name: analyze
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew sonarqube --info
