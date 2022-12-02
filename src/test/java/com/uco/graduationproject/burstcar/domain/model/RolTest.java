@@ -17,7 +17,6 @@ class RolTest {
 
     @Test
     void validateFieldsMissingName() {
-
         Assertions.assertEquals("Un rol siempre debe tenr un nombre",
                 Assertions.assertThrows(IllegalArgumentException.class, () ->
                         new RolTestDataBuilder().byDefault().withName("").build()).getMessage());

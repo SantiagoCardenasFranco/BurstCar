@@ -32,7 +32,7 @@ class ServiceUpdateVehicleServiceTest {
         serviceUpdateVehicleService.executeUpdate(id, vehicleServiceUpdate);
 
         Mockito.verify(repositoryServiceUpdate, Mockito.times(1)).updateService(
-                eq(id), eq(vehicleServiceUpdate));
+                id, vehicleServiceUpdate);
     }
 
     @Test

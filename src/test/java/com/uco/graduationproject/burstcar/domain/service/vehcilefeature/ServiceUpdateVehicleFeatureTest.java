@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 class ServiceUpdateVehicleFeatureTest {
@@ -34,7 +33,7 @@ class ServiceUpdateVehicleFeatureTest {
         serviceUpdateVehicleFeature.executeUpdate(id, vehicleFeaturesUpdate);
 
         Mockito.verify(repositoryVehicleFeatureUpdate, Mockito.times(1)).updateFeature(
-                eq(id), eq(vehicleFeaturesUpdate));
+                id, vehicleFeaturesUpdate);
     }
 
     @Test

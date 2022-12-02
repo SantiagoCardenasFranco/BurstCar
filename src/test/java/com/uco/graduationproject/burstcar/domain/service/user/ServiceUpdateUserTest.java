@@ -39,7 +39,7 @@ class ServiceUpdateUserTest {
         serviceUpdateUser.executeUpdate(id, userUpdate);
 
         Mockito.verify(repositoryUserUpdate, Mockito.times(1)).updateUser(
-                eq(id), eq(userUpdate));
+                id, userUpdate);
     }
 
     @Test
