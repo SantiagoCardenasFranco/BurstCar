@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ValidatorAttributes {
 
-    private static final String PATTERN_PASSWORD = "^(?=.*\\d)(?=.*[\\u0021-\\u002b\\u003c-\\u0040])(?=.*[A-Z])(?=.*[a-z])\\S{8,16}";
+    private static final String PATTERN = "^(?=.*\\d)(?=.*[\\u0021-\\u002b\\u003c-\\u0040])(?=.*[A-Z])(?=.*[a-z])\\S{8,16}";
     private static final String PATTERN_EMAIL = "^[a-zA-Z0-9_!#$%&'\\*+/=?{|}~^.-]+@[a-zA-Z0-9.-]+$";
 
     private ValidatorAttributes() {
@@ -42,7 +42,7 @@ public class ValidatorAttributes {
 
     public static void specialCharactersPassword(String password, String message)
     {
-        if(!acceptancePatternPassword(password, PATTERN_PASSWORD))
+        if(!acceptancePatternPassword(password, PATTERN))
         {
             throw new IllegalArgumentException(message);
         }
