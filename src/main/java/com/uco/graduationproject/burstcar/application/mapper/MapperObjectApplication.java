@@ -1,6 +1,6 @@
 package com.uco.graduationproject.burstcar.application.mapper;
 
-public interface MapperObjectApplication<Dto, D>{
+public interface MapperObjectApplication<A, D>{
 
-    D mapperUserToDomain(Dto dto);
+    D mapperUserToDomain(A dto);
 }

@@ -1,7 +1,6 @@
 package com.uco.graduationproject.burstcar.domain.service.vehicle;
 
 import com.uco.graduationproject.burstcar.domain.dto.DtoVehicleSummary;
-import com.uco.graduationproject.burstcar.domain.model.Vehicle;
 import com.uco.graduationproject.burstcar.domain.port.vehicle.RepositoryVehicle;
 
 public class ServiceConsultVehicleByUser {
