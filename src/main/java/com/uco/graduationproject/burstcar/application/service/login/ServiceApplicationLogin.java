@@ -14,12 +14,12 @@ import java.util.List;
 public class ServiceApplicationLogin {
 
     private final ServiceEncryptedPassword serviceEncryptedPassword;
-    private final ServiceGeneratorToken serviceGeneratorToken;
+    //private final ServiceGeneratorToken serviceGeneratorToken;
     private final RepositoryUser repositoryUser;
 
-    public ServiceApplicationLogin(ServiceEncryptedPassword serviceEncryptedPassword, ServiceGeneratorToken serviceGeneratorToken, RepositoryUser repositoryUser) {
+    public ServiceApplicationLogin(ServiceEncryptedPassword serviceEncryptedPassword , RepositoryUser repositoryUser) {
         this.serviceEncryptedPassword = serviceEncryptedPassword;
-        this.serviceGeneratorToken = serviceGeneratorToken;
+        //this.serviceGeneratorToken = serviceGeneratorToken;
         this.repositoryUser = repositoryUser;
     }
 
@@ -31,7 +31,7 @@ public class ServiceApplicationLogin {
             throw  new IllegalStateException("Email o contraseña incorrecta");
         }
 
-        List<String> roles = user.getRols().stream().map(Rol::getRol).toList();
+        //List<String> roles = user.getRols().stream().map(Rol::getRol).toList();
         //Falta implementar token
         //return this.serviceGeneratorToken.execute(dto.getEmail(), roles)
         return "Hecho";
