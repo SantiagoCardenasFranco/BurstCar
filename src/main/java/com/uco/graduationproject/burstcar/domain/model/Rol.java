@@ -19,4 +19,8 @@ public class Rol {
         this.name = name;
         this.description = description;
     }
+
+    public String getRol() {
+        return name;
+    }
 }
