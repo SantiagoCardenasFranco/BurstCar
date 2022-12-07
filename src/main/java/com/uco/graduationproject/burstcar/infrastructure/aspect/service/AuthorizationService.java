@@ -13,7 +13,7 @@ import java.util.List;
 public class AuthorizationService {
 
     public boolean isAuthorized(List<String> rolesToAuthorized) {
-        List<String> currentRoles = JWT.decode(obtenerTokenActual()).getClaim("roles").asList(String.class);
+        List<String> currentRoles = JWT.decode(obtainTokenCurrent()).getClaim("roles").asList(String.class);
         return hasRole(rolesToAuthorized, currentRoles);
     }
 
@@ -27,7 +27,7 @@ public class AuthorizationService {
         return result;
     }
 
-    private String obtenerTokenActual() {
+    private String obtainTokenCurrent() {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         return request.getHeader(HttpHeaders.AUTHORIZATION);
     }
