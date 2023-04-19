@@ -9,6 +9,8 @@ import java.util.List;
 
 class UserTest {
 
+    
+
     @Test
     void validateCreationSuccessful() {
         User user = new UserTestDataBuilder().byDefault().build();
